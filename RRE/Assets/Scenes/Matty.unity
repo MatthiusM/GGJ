@@ -187,6 +187,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 687d0e31179eefe4e8df8739d37226b7, type: 2}
   groundTiles:
   - {fileID: 11400000, guid: e6b337020e6cd59478d423eae2749f59, type: 2}
+  - {fileID: 11400000, guid: d478f15bf91ad7845a2bb5d7a62bd234, type: 2}
+  - {fileID: 11400000, guid: 38d5155e59089b34581b2334673856b7, type: 2}
   tileMap: {fileID: 1912036951}
 --- !u!1 &1471021704
 GameObject:

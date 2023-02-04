@@ -21,14 +21,14 @@ public class CreateTileMap : MonoBehaviour
             tileMap.SetTile(new Vector3Int(i, floorY, 0), floorTiles[map]);
             for (int j = floorY - 1; j > -1*(floorY+11); j--)
             {
-                tileMap.SetTile(new Vector3Int(i, j, 0), groundTiles[PickRandomTile(ref groundTiles)]);
+                tileMap.SetTile(new Vector3Int(i, j, 0), groundTiles[map]);
             }
         }
     }
 
     int PickRandomTile(ref List<Tile> t) 
     {
-        return Random.Range(0, t.Count-1);
+        return Random.Range(0, t.Count);
     }
 
     
