@@ -10,7 +10,9 @@ public class CreateTileMap : MonoBehaviour
     public List<Tile> groundTiles;
     public List<Tile> skyTiles;
 
+    [Header("TileMaps")]
     public Tilemap tileMap;
+    public Tilemap tileMapCollidable;
 
     private readonly int floorY = 4;
     // Start is called before the first frame update
@@ -20,7 +22,7 @@ public class CreateTileMap : MonoBehaviour
         for (int i = -11; i < 11; i++)
         {
             //grass top
-            tileMap.SetTile(new Vector3Int(i, floorY, 0), floorTiles[map]);
+            tileMapCollidable.SetTile(new Vector3Int(i, floorY, 0), floorTiles[map]);
             //floor
             for (int j = floorY - 1; j > -1*(floorY+3); j--)
             {

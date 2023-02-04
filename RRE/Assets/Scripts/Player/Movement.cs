@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-    private bool cloud = true;
+    public bool cloud = true;
     private bool directionRight = true;
     private readonly float playerHalfWidth = 0.5f;
-    private readonly float fallSpeed = 10.0f;
+    private readonly float fallSpeed = 25.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position += new Vector3(0, 102, 0);
     }
+   
 
     // Update is called once per frame
     void Update()
