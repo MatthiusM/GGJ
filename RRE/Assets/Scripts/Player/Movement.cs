@@ -7,7 +7,8 @@ public class Movement : MonoBehaviour
 {
     private bool cloud = true;
     private bool directionRight = true;
-    public readonly float playerHalfWidth = 0.5f;
+    private readonly float playerHalfWidth = 0.5f;
+    private readonly float fallSpeed = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,16 @@ public class Movement : MonoBehaviour
                 
                 directionRight = !directionRight;
             }
-            
+
+            FallingPlayer(new Vector3(0, fallSpeed, 0));
+
         }
+    }
+
+    void FallingPlayer(Vector3 v)
+    {
+        transform.position -= v * Time.deltaTime;
+        Camera.main.transform.position -= v * Time.deltaTime;
     }
 
     static float CameraWidth()
