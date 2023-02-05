@@ -12,6 +12,7 @@ public class Collision : MonoBehaviour
         transform.position -= new Vector3(0, 1, 0);
         //turn into tree
         Instantiate(Player2, this.transform.position, Quaternion.identity);
+        Player2.transform.position -= new Vector3(0, 3, 0);
         Destroy(this.gameObject);
     }
 }

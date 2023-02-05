@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour
         }
         MovementInput();
     }
-    static float CameraWidth()
+    public static float CameraWidth()
     {
         float aspect = (float)Screen.width / Screen.height;
 

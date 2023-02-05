@@ -15,9 +15,16 @@ public class Gold : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player2Movement.onScreen)
+        transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
+
+        if(transform.position.y > 11)
         {
-            transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
+            Destroy(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("hit");
     }
 }
