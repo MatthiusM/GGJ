@@ -5,53 +5,28 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
+    Vector2 screenBounds;
     public bool cloud = true;
-    private bool directionRight = true;
-    private readonly float playerHalfWidth = 0.5f;
+    private readonly float playerWidth = 2.0f;
     private readonly float fallSpeed = 25.0f;
+    public float playerSpeed = 10.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         transform.position += new Vector3(0, 102, 0);
     }
-   
 
     // Update is called once per frame
     void Update()
     {
         if (cloud)
-        {
-            if (directionRight)
-            {
-                transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
-            }
-            else
-            {
-                transform.position -= new Vector3(1, 0, 0) * Time.deltaTime;
-            }
-
-            if(directionRight && transform.position.x + playerHalfWidth > CameraWidth())
-            {
-                directionRight = !directionRight;
-            }
-            else if (!directionRight && transform.position.x - playerHalfWidth < -1* CameraWidth())
-            {
-                
-                directionRight = !directionRight;
-            }
-
+        {          
             FallingPlayer(new Vector3(0, fallSpeed, 0));
-
         }
+        MovementInput();
     }
-
-    void FallingPlayer(Vector3 v)
-    {
-        transform.position -= v * Time.deltaTime;
-        Camera.main.transform.position -= v * Time.deltaTime;
-    }
-
     static float CameraWidth()
     {
         float aspect = (float)Screen.width / Screen.height;
@@ -60,6 +35,35 @@ public class Movement : MonoBehaviour
 
         float worldWidth = worldHeight * aspect / 2;
         
-        return worldWidth;
+        return Camera.main.transform.position.x - worldWidth;
+    }
+
+
+    void MovementInput()
+    {
+        //left
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            if (transform.position.x - this.GetComponent<SpriteRenderer>().bounds.size.x / 2 >  CameraWidth())
+            {
+                transform.position -= new Vector3(playerSpeed, 0, 0) * Time.deltaTime;
+            }          
+        }
+        //right
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {          
+            if(transform.position.x + this.GetComponent<SpriteRenderer>().bounds.size.x / 2 < -1* CameraWidth())
+            {
+                transform.position += new Vector3(playerSpeed, 0, 0) * Time.deltaTime;
+            }
+                       
+        }
+        
+    }
+
+    void FallingPlayer(Vector3 v)
+    {
+        transform.position -= v * Time.deltaTime;
+        Camera.main.transform.position -= v * Time.deltaTime;
     }
 }
