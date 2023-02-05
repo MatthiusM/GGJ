@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
 {
     Vector2 screenBounds;
     public bool cloud = true;
-    private readonly float playerWidth = 2.0f;
     private readonly float fallSpeed = 25.0f;
     public float playerSpeed = 10.0f;
 

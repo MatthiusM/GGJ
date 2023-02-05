@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Player2Movement : MonoBehaviour
 {
+    public static bool onScreen = false;
     public float playerSpeed = 10.0f;
+
+    private void Start()
+    {
+        onScreen = true;
+    }
 
     // Update is called once per frame
     void Update()
